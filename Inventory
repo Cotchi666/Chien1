@@ -1,0 +1,59 @@
+package demo.demo;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Inventory {
+    private List guitarList;
+
+    public Inventory() {
+        this.guitarList = new LinkedList<>();
+    }
+
+    public void addGuitar(String serialNumber, String builder, String model, String type, String backWood,
+            String topWood, double price) {
+        Guitar guitar = new Guitar(serialNumber, builder, model, type, backWood, topWood, price);
+        this.guitarList.add(guitar);
+    }
+
+    public Guitar getGuitar(String serialNumber) {
+        for (Iterator i = this.guitarList.iterator(); i.hasNext();) {
+            Guitar guitar = (Guitar) i.next();
+            if (guitar.getSerialNumber().equals(serialNumber)) {
+                return guitar;
+            }
+        }
+
+        return null;
+    }
+
+    public Guitar search(Guitar seacrhGuitar) {
+        for (Iterator i = guitarList.iterator(); i.hasNext();) {
+            Guitar guitar = (Guitar) i.next();
+            String builder = seacrhGuitar.getBuilder().toLowerCase();
+            if ((builder != null) && (!builder.equals("")) && (!builder.equals(guitar.getBuilder().toLowerCase()))) {
+                continue;
+            }
+            String model = seacrhGuitar.getModel().toLowerCase();
+            if ((model != null) && (!model.equals("")) && (!model.equals(guitar.getModel().toLowerCase()))) {
+                continue;
+            }
+            String type = seacrhGuitar.getModel().toLowerCase();
+            if ((type != null) && (!type.equals("")) && (!type.equals(guitar.getModel().toLowerCase()))) {
+                continue;
+            }
+            String backWood = seacrhGuitar.getModel().toLowerCase();
+            if ((backWood != null) && (!backWood.equals("")) && (!backWood.equals(guitar.getModel().toLowerCase()))) {
+                continue;
+            }
+            String topWood = seacrhGuitar.getModel().toLowerCase();
+            if ((topWood != null) && (!topWood.equals("")) && (!topWood.equals(guitar.getModel().toLowerCase()))) {
+                continue;
+
+            }
+            return guitar;
+        }
+        return null;
+    }
+}
